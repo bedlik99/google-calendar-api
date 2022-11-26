@@ -1,0 +1,7 @@
+.main-element {
+    border: 2px solid #5ba8f5;
+    margin: 5%;
+    min-width: 12vmax;
+    min-height: 15vh;
+    text-align: center;
+}

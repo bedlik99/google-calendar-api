@@ -1,0 +1,45 @@
+.main-section {
+    /* background-color: white; */
+    max-width: 100vmax;
+    min-height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-header {
+    display: flex;
+    max-height: 8vh;
+    width: 100%;
+    border: 1px solid #5ba8f5;
+}
+
+.calendar-content {
+    display: flex;
+    height: 92vh;
+    max-height: 92vh;
+    max-width: auto;
+}
+
+.nav-left-bar {
+    width: 10vmax;
+    max-width: 10vmax;
+    max-height: 92vh;
+    border: 1px solid red;
+}
+
+.month-overview {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 90vmax;
+    max-width: 90vmax;
+    height: 92vh;
+    max-height: 92vh;
+    border: 3px solid green; 
+}
+
