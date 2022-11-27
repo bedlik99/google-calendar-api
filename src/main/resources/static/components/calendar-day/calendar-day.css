@@ -1,7 +1,10 @@
 .main-element {
-    border: 2px solid #5ba8f5;
-    margin: 5%;
-    min-width: 12vmax;
-    min-height: 15vh;
+    background-color: white;
+    border: 3px solid #5ba8f5;
+    border-radius: 5px;
+    margin: 7%;
+    min-width: 11vmax;
+    min-height: 14vh;
     text-align: center;
 }
+

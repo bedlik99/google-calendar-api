@@ -6,7 +6,7 @@ const template = document.createElement('template');
 const homeContentToRender =/*template*/`
     <div class="home-content">
         <div class="header-home"> 
-            <h1>Welcome to my site!</h1>
+            <h1>Welcome to the Google calendar sharing service!</h1>
             <button id="signIn" type="button">Sign in</button>
             <button type="button">Register</button>
         </div>

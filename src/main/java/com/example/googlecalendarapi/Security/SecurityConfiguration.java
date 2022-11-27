@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 @Configuration
 public class SecurityConfiguration {
 
-    private static final String[] FRONTEND_ROUTES = {"/sign-in", "/signed-in/**"};
-    private static final String[] HOSTED_STATIC_FILES_PATHS = {"/favicon.ico", "/app.*", "/utils/**", "/pages/**", "/components/**"};
+    private static final String[] FRONTEND_ROUTES = {"/sign-in", "/signed-in/calendar-overview"};
+    private static final String[] HOSTED_STATIC_FILES_PATHS = {"/favicon.ico", "/app.*", "/utils/**", "/pages/**", "/components/**", "/assets/**"};
     private final WebUserRepository webUserRepository;
     private final JwtTokenFilter jwtTokenFilter;
 

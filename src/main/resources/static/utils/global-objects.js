@@ -33,74 +33,38 @@ window.addScriptToHtmlHead = (url, type) => {
         script.src = url;
         document.head.appendChild(script);
     }
-
 }
 
+const monthsDetails = new Map()
+    .set("January", { orderNum: 1, numberOfDays: 31, previousMonth: null, nextMonth: "February" })
+    .set("February", { orderNum: 2, numberOfDays: undefined, previousMonth: "January", nextMonth: "March" })
+    .set("March", { orderNum: 3, numberOfDays: 31, previousMonth: "February", nextMonth: "April" })
+    .set("April", { orderNum: 4, numberOfDays: 30, previousMonth: "March", nextMonth: "May" })
+    .set("May", { orderNum: 5, numberOfDays: 31, previousMonth: "April", nextMonth: "June" })
+    .set("June", { orderNum: 6, numberOfDays: 30, previousMonth: "May", nextMonth: "July" })
+    .set("July", { orderNum: 7, numberOfDays: 31, previousMonth: "June", nextMonth: "August" })
+    .set("August", { orderNum: 8, numberOfDays: 31, previousMonth: "July", nextMonth: "September" })
+    .set("September", { orderNum: 9, numberOfDays: 30, previousMonth: "August", nextMonth: "October" })
+    .set("October", { orderNum: 10, numberOfDays: 31, previousMonth: "September", nextMonth: "November" })
+    .set("November", { orderNum: 11, numberOfDays: 30, previousMonth: "October", nextMonth: "December" })
+    .set("December", { orderNum: 12, numberOfDays: 31, previousMonth: "November", nextMonth: null });
 
 export function getNumberOfDaysInGivenMonth(year, monthName) {
-    switch (monthName) {
-        case "January":
-            return 31;
-        case "February":
-            return (Number(year) % 4 === 0 && Number(year) % 100 !== 0) || Number(year) % 400 === 0 ? 29 : 28;
-        case "March":
-            return 31;
-        case "April":
-            return 30;
-        case "May":
-            return 31;
-        case "June":
-            return 30;
-        case "July":
-            return 31;
-        case "August":
-            return 31;
-        case "September":
-            return 30;
-        case "October":
-            return 31;
-        case "November":
-            return 30;
-        case "December":
-            return 31;
-        default:
-            return -1;
+    if (monthName === "February") {
+        return (Number(year) % 4 === 0 && Number(year) % 100 !== 0) || Number(year) % 400 === 0 ? 29 : 28;
     }
-}
-
-function getMonthNumberFromMonthName(monthName) {
-    switch (monthName) {
-        case "January":
-            return 1;
-        case "February":
-            return 2;
-        case "March":
-            return 3;
-        case "April":
-            return 4;
-        case "May":
-            return 5;
-        case "June":
-            return 6;
-        case "July":
-            return 7;
-        case "August":
-            return 8;
-        case "September":
-            return 9;
-        case "October":
-            return 10;
-        case "November":
-            return 11;
-        case "December":
-            return 12;
-        default:
-            return -1;
-    }
+    return monthsDetails.get(monthName).numberOfDays;
 }
 
 export function getNameOfWeekDayByDate(year, month, day) {
-    const nameOfTheWeekFromDate = new Date(year + "-" + getMonthNumberFromMonthName(month) + "-" + day)
+    const nameOfTheWeekFromDate = new Date(year + "-" + monthsDetails.get(month).orderNum + "-" + day)
         .toLocaleDateString("en-us", { weekday: 'short' });
     return nameOfTheWeekFromDate;
+}
+
+export function getNextOrPreviousMonthName(currentMonth, directionFlag) {
+    if (directionFlag) {
+        return monthsDetails.get(currentMonth).nextMonth;
+    }
+    return monthsDetails.get(currentMonth).previousMonth;
 }

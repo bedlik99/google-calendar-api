@@ -11,35 +11,115 @@
 }
 
 .nav-header {
+    border-bottom: 1px solid white;
+    background-color: #5ba8f5;
     display: flex;
+    column-gap: 1%;
     max-height: 8vh;
     width: 100%;
-    border: 1px solid #5ba8f5;
+}
+
+.year-select {
+    height: 5vh;
+    padding: 5px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    outline: 0;
+    transition: all 0.3s;
+}
+
+.year-select:hover {
+    transform: translateY(-2px);
+}
+
+.change-month-btn {
+    background-color: white;
+    font-size: 1.4em;
+    height: 5vh;
+    min-width: 5vmax;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+.sign-out-btn {
+    margin: 10px;
+    margin-left: auto;
+    border-radius: 5px;
+    border: 2px solid #5ba8f5;
+    background-color: transparent;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sign-out-btn:hover {
+    border: 2px solid white;
+    background-color: #5ba8f5;
+    color: white;
+}
+
+.sign-out-btn:active {
+    transform: translateY(2px);
+}
+
+.change-month-btn:hover {
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 8px 0px rgba(66, 68, 90, 1);
+}
+
+.change-month-btn:active {
+    transform: translateY(3px);
+}
+
+.month-select-label {
+    color: white;
+    padding-left: 10px;
+    border-left: 2px solid white;
+    font-size: 2em;
+    min-height: fit-content;
+    height: 5vh;
+    min-width: 8vmax;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    opacity: 0;
+    animation: showLabel 0.7s ease-out forwards;
 }
 
 .calendar-content {
     display: flex;
-    height: 92vh;
-    max-height: 92vh;
-    max-width: auto;
-}
-
-.nav-left-bar {
-    width: 10vmax;
-    max-width: 10vmax;
-    max-height: 92vh;
-    border: 1px solid red;
+    min-height: 93vh;
+    width: 100vmax;
+    margin: 0;
+    padding: 0;
 }
 
 .month-overview {
-    background-color: white;
+    background-color: whitesmoke;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 90vmax;
-    max-width: 90vmax;
-    height: 92vh;
-    max-height: 92vh;
-    border: 3px solid green; 
+    gap: 0.5%;
+    width: 100vmax;
+    height: 93vh;
+    max-height: 93vh;
+    overflow-y: auto;
 }
 
+@keyframes showLabel {
+    from {}
+
+    to {
+        opacity: 1;
+    }
+}
