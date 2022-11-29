@@ -1,4 +1,5 @@
 export default class WebComponent extends HTMLElement {
+    hasMounted = false;
 
     constructor(cssClass, template) {
         super();

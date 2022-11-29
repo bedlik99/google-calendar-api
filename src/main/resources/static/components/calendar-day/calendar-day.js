@@ -4,14 +4,16 @@ import WebComponent from "../../utils/web-component.js";
 const template = document.createElement('template');
 const signInContentToRender =/*template*/`
     <div class="main-element">
-        <p id="day"></p>
-        <input type="time"/>
+        <p id="day" class="day-info"></p>
+        <p id="dayNr" class="day-info"></p>
     </div>
 `;
 
 template.innerHTML = signInContentToRender;
 
 class CalendarDay extends WebComponent {
+    #weekDayName;
+    #monthlyDayNumber;
 
     constructor() {
         super(classes, template);
@@ -29,16 +31,26 @@ class CalendarDay extends WebComponent {
         if (oldValue === newValue) {
             return;
         }
-        this.render();
+        if (String(prop) === "day") {
+            this.#weekDayName = this.day.split(" ")[0];
+            this.#monthlyDayNumber = this.day.split(" ")[1];
+        }
+
+        if (this.hasMounted) {
+            this.render();
+        }
     }
 
     connectedCallback() {
+
         this.render();
         this.assignListeners();
+        this.hasMounted = true;
     }
 
     render() {
-        this.shadowRoot.querySelector("#day").innerHTML = this.day;
+        this.shadowRoot.querySelector("#day").textContent = this.#weekDayName;
+        this.shadowRoot.querySelector("#dayNr").textContent = this.#monthlyDayNumber;
     }
 
     get day() {

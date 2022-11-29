@@ -1,10 +1,22 @@
 .main-element {
     background-color: white;
-    border: 3px solid #5ba8f5;
+    border: 1px solid #cfd0d1;
     border-radius: 5px;
-    margin: 7%;
+    margin: 10%;
     min-width: 11vmax;
-    min-height: 14vh;
+    min-height: 22vh;
     text-align: center;
+    transition: all 0.3s;
 }
 
+.main-element:hover { 
+    background-color: #5ba8f5;
+    border: 1px solid #5ba8f5;
+    color: white;
+    cursor: pointer;
+    transform: translateY(-5px);
+}
+
+.day-info {
+    font-size: 1.4em;
+}

@@ -18,7 +18,7 @@ const signInContentToRender =/*template*/`
             </select>
             <button id="prev-month-btn" type="button" class="change-month-btn"><</button>
             <button id="next-month-btn" type="button" class="change-month-btn">></button>
-            <div id="month-select" class="month-select-label">${currentMonth}</div>
+            <div id="month-select" class="month-select-label">${currentMonth + " " + currentYear} </div>
             <button id="sign-out-btn" type="button" class="sign-out-btn">Sign out</button>
         </div>
         <div id="calendar-content" class="calendar-content">
@@ -40,6 +40,7 @@ class CalendarOverview extends WebComponent {
 
     updateSelectedYear(event) {
         this.selected_year = this.shadowRoot.querySelector("#year-select").value;
+        this.#selectedMonthLabel.textContent = this.selected_month + " " + this.selected_year;
     }
 
     changeMonth(directionFlag, event) {
@@ -49,7 +50,7 @@ class CalendarOverview extends WebComponent {
         }
 
         const newLabel = this.#selectedMonthLabel.cloneNode();
-        newLabel.textContent = futureSelectedMonth;
+        newLabel.textContent = futureSelectedMonth + " " + this.selected_year;
         this.#selectedMonthLabel.replaceWith(newLabel);
         this.#selectedMonthLabel = this.shadowRoot.querySelector("#month-select");
         this.selected_month = futureSelectedMonth;
@@ -68,7 +69,10 @@ class CalendarOverview extends WebComponent {
         if (oldValue === newValue) {
             return;
         }
-        this.render();
+
+        if (this.hasMounted) {
+            this.render();
+        }
     }
 
     assignEventListeners() {
@@ -86,6 +90,7 @@ class CalendarOverview extends WebComponent {
 
         this.render();
         this.assignEventListeners();
+        this.hasMounted = true;
     }
 
     disconnectedCallback() {
@@ -94,18 +99,15 @@ class CalendarOverview extends WebComponent {
     render() {
         this.#monthDays = [];
         this.#monthOverviewElement.textContent = "";
-        const tmpSelectedYear =  !!this.selected_year ? this.selected_year : currentYear;
-        const tmpSelectedMonth = !!this.selected_month ? this.selected_month : currentMonth;
-        const numberOfDaysInSelectedMonth = getNumberOfDaysInGivenMonth(tmpSelectedYear, tmpSelectedMonth);
+        const numberOfDaysInSelectedMonth = getNumberOfDaysInGivenMonth(this.selected_year, this.selected_month);
 
         for (let dayNumber = 1; dayNumber <= numberOfDaysInSelectedMonth; dayNumber++) {
             let dayElement = this.#monthOverviewElement.appendChild(document.createElement("calendar-day-content"));
-            dayElement.setAttribute("day", getNameOfWeekDayByDate(tmpSelectedYear, tmpSelectedMonth, dayNumber) + " " + String(dayNumber));
+            dayElement.setAttribute("day", getNameOfWeekDayByDate(this.selected_year, this.selected_month, dayNumber) + " " + String(dayNumber));
             this.#monthDays.push(dayElement);
         }
-        console.log("render")
     }
-
+    
 
     get selected_year() {
         return this.getAttribute("selected_year");
@@ -124,6 +126,5 @@ class CalendarOverview extends WebComponent {
     }
 
 }
-
 
 window.customElements.define('calendar-overview-content', CalendarOverview);
