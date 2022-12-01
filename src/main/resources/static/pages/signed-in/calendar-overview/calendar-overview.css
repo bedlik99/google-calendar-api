@@ -10,6 +10,28 @@
     padding: 0;
 }
 
+.picked-day-form {
+    background-color: whitesmoke;
+    margin: auto;
+    margin-top: 10vh;
+    width: 30vmax;
+    height: 75vh;
+    border: 5px solid black;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.picked-day-backdrop {
+    backdrop-filter: blur(3px);
+    position: absolute;
+    z-index: 10;
+    min-height: 100vh;
+    min-width: 100vmax;
+}
+
 .nav-header {
     border-bottom: 1px solid white;
     background-color: #5ba8f5;

@@ -68,3 +68,9 @@ export function getNextOrPreviousMonthName(currentMonth, directionFlag) {
     }
     return monthsDetails.get(currentMonth).previousMonth;
 }
+
+export function createHtmlElementFromText(htmlString) {
+    const pickedDayElementTemplate = document.createElement('template');
+    pickedDayElementTemplate.innerHTML = htmlString.trim();
+    return pickedDayElementTemplate.content.firstChild;
+}
