@@ -57,43 +57,15 @@ class CalendarOverview extends WebComponent {
     }
 
     showRegisterDayForm(selectedDay, event) {
-        const pickedDayElementText = /*template*/`
-            <div class="picked-day-backdrop">
-                <div class="picked-day-form">
-                    <div>
-                        <h1>Your visit details</h1>
-                        <h2>${this.selected_month + " " + this.selected_year}</h2>
-                        <h2>${selectedDay.shadowRoot.querySelector("#day").textContent + " " + selectedDay.shadowRoot.querySelector("#dayNr").textContent}</h2>
-                    </div>
-                    <form>
-                        <div>
-                            <label>Full name</label>
-                            <input type="text" />
-                        </div>
-                        <div>
-                            <label>Phone number</label>
-                            <input type="tel" pattern="[0-9]{9}" required />
-                        </div>
-                        <div>
-                            <label>Visit type</label>
-                            <select name="Year" id="year-select" class="year-select">
-                                <option value="Normal" selected="selected">Normal</option>
-                                <option value="Extended">Extended</option>
-                                <option value="Special">Special</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>Visit time</label>
-                            <input type="time" />
-                        </div>   
-                        <input type="submit" value="Request visit" />
-                        <input type="button" value="Cancel" />
-                    </form>
-                </div>
-            </div>
-        `;
+        const pickedDayRegisterFormElement = createHtmlElementFromText(/*template*/`
+            <register-visit-form 
+                selected_month=${this.selected_month}
+                selected_year=${this.selected_year}
+                day_details=${selectedDay.shadowRoot.querySelector("#weekDay").textContent + "-" + selectedDay.shadowRoot.querySelector("#dayNr").textContent}
+            ></register-visit-form>
+        `);
 
-        this.shadowRoot.querySelector("#main-section").prepend(createHtmlElementFromText(pickedDayElementText));
+        this.shadowRoot.querySelector("#main-section").prepend(pickedDayRegisterFormElement);
     }
 
     signOut(event) {
@@ -133,22 +105,24 @@ class CalendarOverview extends WebComponent {
         this.hasMounted = true;
     }
 
-    disconnectedCallback() {}
+    disconnectedCallback() { }
 
     render() {
         this.#monthDays = [];
         this.#monthOverviewElement.textContent = "";
         const numberOfDaysInSelectedMonth = getNumberOfDaysInGivenMonth(this.selected_year, this.selected_month);
         for (let dayNumber = 1; dayNumber <= numberOfDaysInSelectedMonth; dayNumber++) {
-            const dayElement = document.createElement("calendar-day-content");
-            dayElement.setAttribute("day", getNameOfWeekDayByDate(this.selected_year, this.selected_month, dayNumber) + " " + String(dayNumber));
+            const dayDetails = getNameOfWeekDayByDate(this.selected_year, this.selected_month, dayNumber) + "-" + String(dayNumber);
+            const dayElement = createHtmlElementFromText(/*template*/`
+                <calendar-day-content day_details=${dayDetails}></calendar-day-content>
+            `);
             dayElement.addEventListener("click", this.showRegisterDayForm.bind(this, dayElement));
             this.#monthOverviewElement.appendChild(dayElement);
             this.#monthDays.push(dayElement);
         }
     }
 
-    
+
 
     get selected_year() {
         return this.getAttribute("selected_year");

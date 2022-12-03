@@ -57,6 +57,7 @@ const handleLocation = async () => {
         case "/signed-in/calendar-overview":
             window.addScriptToHtmlHead("/pages/signed-in/calendar-overview/calendar-overview.js", "module");
             window.addScriptToHtmlHead("/components/calendar-day/calendar-day.js", "module");
+            window.addScriptToHtmlHead("/components/register-visit-form/register-visit-form.js", "module");
             appObject.render("calendar-overview-content");
             break;
     }

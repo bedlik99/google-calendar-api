@@ -4,7 +4,7 @@ import WebComponent from "../../utils/web-component.js";
 const template = document.createElement('template');
 const signInContentToRender =/*template*/`
     <div class="main-element">
-        <p id="day" class="day-info"></p>
+        <p id="weekDay" class="day-info"></p>
         <p id="dayNr" class="day-info"></p>
     </div>
 `;
@@ -24,16 +24,16 @@ class CalendarDay extends WebComponent {
     }
 
     static get observedAttributes() {
-        return ["day"];
+        return ["day_details"];
     }
 
     attributeChangedCallback(prop, oldValue, newValue) {
         if (oldValue === newValue) {
             return;
         }
-        if (String(prop) === "day") {
-            this.#weekDayName = this.day.split(" ")[0];
-            this.#monthlyDayNumber = this.day.split(" ")[1];
+        if (String(prop) === "day_details") {
+            this.#weekDayName = this.day_details.split("-")[0];
+            this.#monthlyDayNumber = this.day_details.split("-")[1];
         }
 
         if (this.hasMounted) {
@@ -42,23 +42,23 @@ class CalendarDay extends WebComponent {
     }
 
     connectedCallback() {
-
+        
         this.render();
         this.assignListeners();
         this.hasMounted = true;
     }
 
     render() {
-        this.shadowRoot.querySelector("#day").textContent = this.#weekDayName;
+        this.shadowRoot.querySelector("#weekDay").textContent = this.#weekDayName;
         this.shadowRoot.querySelector("#dayNr").textContent = this.#monthlyDayNumber;
     }
 
-    get day() {
-        return this.getAttribute("day");
+    get day_details() {
+        return this.getAttribute("day_details");
     }
 
-    set day(value) {
-        this.setAttribute("day", value);
+    set day_details(value) {
+        this.setAttribute("day_details", value);
     }
 
 }

@@ -216,3 +216,6 @@ insert into users (username, password, enabled) values (?,?,?) [42102-214]
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabela "USERS" nie istnieje
 Table "USERS" not found; SQL statement:
 insert into users (username, password, enabled) values (?,?,?) [42102-214]
+2022-12-03 22:10:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "WEB_USER" not found (this database is empty); SQL statement:
+INSERT INTO WEB_USER (USERNAME, PASSWORD) VALUES ('test','$2y$10$v6MoOeDI324B4potN9iZp.u37CGdNKMLLtn3EQ18kPRgsstWwLQ3S') [42104-214]

@@ -1,0 +1,92 @@
+.picked-day-form {
+    background-color: whitesmoke;
+    margin: auto;
+    margin-top: 2.5vh;
+    width: 40vmax;
+    height: 90vh;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    /* border: 5px solid white; */
+}
+/* #ccccc */
+
+.picked-day-backdrop {
+    backdrop-filter: brightness(50%);
+    position: absolute;
+    z-index: 10;
+    min-height: 100vh;
+    min-width: 100vmax;
+}
+
+.year-select:hover {
+    transform: translateY(-2px);
+}
+
+.form-row-element {
+    display: flex;
+    font-size: 1.4em;
+    margin: auto;
+    margin-bottom: 5vh;
+    padding: 1%;
+    min-height: 5%;
+}
+
+.form-buttons-element {
+    display: flex;
+    justify-content: space-around;
+}
+
+.form-input-btn {
+    min-height: 5%;
+    font-size: 1em;
+    padding: 2%;
+    background-color: white;
+    border: none;
+    border-bottom: 2px solid aqua;
+    border-radius: 5px;
+    outline: none;
+    width: 10vmax;
+    max-width: 10vmax;
+    cursor: pointer;
+    transition: all 0.1s;
+    margin-top: 2vh;
+}
+
+.input-label {
+    min-width: 10vmax;
+    min-height: 5%;
+    padding: 5px;
+    margin-right: auto;
+}
+
+.input-element {
+    min-height: 5%;
+    font-size: 0.8em;
+    padding: 2%;
+    min-width: 25vmax;
+    border: none;
+    border-bottom: 2px solid aqua;
+    border-radius: 5px;
+    outline: none;
+    margin-right: auto;
+    transition: all 0.2s;
+}
+
+.input-element:hover,
+.form-input-btn:hover {
+    -webkit-box-shadow: 0px 0px 8px 0px rgb(111, 112, 114);
+    -moz-box-shadow: 0px 0px 8px 0px rgb(111, 112, 114);
+    box-shadow: 0px 0px 8px 0px rgb(111, 112, 114);
+}
+
+.input-element:focus,
+.form-input-btn:focus {
+    border-bottom: 2px solid #2bbdbd;
+}
+
+.form-input-btn:active {
+    transform: translateY(3px);
+}

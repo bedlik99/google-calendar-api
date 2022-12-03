@@ -39,11 +39,6 @@ class SignInForm extends WebComponent {
     
     constructor() {
         super(classes, template);
-
-        this.#userInput = this.shadowRoot.querySelector("#usr");
-        this.#passwordInput = this.shadowRoot.querySelector("#pass");
-        this.#signInForm = this.shadowRoot.querySelector("#sign-in-form");
-        this.#submitButton = this.shadowRoot.querySelector("#submit-button");
     }
 
     onLoading() {
@@ -106,6 +101,11 @@ class SignInForm extends WebComponent {
     }
 
     connectedCallback() {
+        this.#userInput = this.shadowRoot.querySelector("#usr");
+        this.#passwordInput = this.shadowRoot.querySelector("#pass");
+        this.#signInForm = this.shadowRoot.querySelector("#sign-in-form");
+        this.#submitButton = this.shadowRoot.querySelector("#submit-button");
+        
         this.render();
         this.assignEventListeners();
     }
