@@ -30,7 +30,7 @@
 }
 
 .sign-in-input {
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
     outline: none;
     font-size: 1.1em;
@@ -55,7 +55,7 @@
 .sign-in-input.invalid {
     background-color: #ffbaba;
     border: 2px solid red;
-    border-radius: 10px;
+    border-radius: 5px;
     outline: none;
     font-size: 1.1em;
     max-width: 15vmax;

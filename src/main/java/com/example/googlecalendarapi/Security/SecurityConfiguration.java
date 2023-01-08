@@ -69,6 +69,7 @@ public class SecurityConfiguration {
                 .authorizeRequests()
                 // start antMatchers just for test/dev
                 .antMatchers("/user/*").permitAll()
+                .antMatchers("/create-gcredentials").permitAll()
                 // finish antMatchers just for test/dev
                 .antMatchers("/").permitAll()
                 .antMatchers(FRONTEND_ROUTES).permitAll()
