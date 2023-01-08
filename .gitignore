@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Secrets ###
-/src/main/resources/resonant-triode-370919-340faff3ce38.json
+/src/main/resources/service_account_details.json
