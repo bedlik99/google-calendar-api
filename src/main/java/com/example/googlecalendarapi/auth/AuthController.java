@@ -11,7 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class AuthController implements AuthOperations {
+public class AuthController implements AuthResources {
 
     private final AuthenticationManager authManager;
     private final JwtTokenUtil jwtTokenUtil;

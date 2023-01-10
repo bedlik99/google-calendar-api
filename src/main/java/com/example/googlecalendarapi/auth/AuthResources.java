@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 
-public interface AuthOperations {
+public interface AuthResources {
 
     @PostMapping("/auth/login")
     ResponseEntity<Object> login(@RequestBody @Valid AuthRequest request);
